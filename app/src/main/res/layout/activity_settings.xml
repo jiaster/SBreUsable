@@ -6,111 +6,102 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="304dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="0dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
-                android:id="@+id/settings_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="18dp"
-                android:ems="10"
-                android:hint="Enter your email"
-                android:inputType="textEmailAddress"
-                android:text="" />
-
-            <EditText
-                android:id="@+id/settings_contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/settings_image"
-                android:layout_marginTop="33dp"
-                android:ems="10"
-                android:hint="Phone Number (optional)"
-                android:inputType="phone"
-                android:text="" />
-
-            <ImageButton
-                android:id="@+id/settings_image"
-                android:layout_width="239dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/settings_email"
-                android:layout_marginTop="28dp"
-                android:contentDescription="Add a profile image"
-                app:srcCompat="@android:drawable/ic_menu_add" />
-
-            <Button
-                android:id="@+id/settings_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="49dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginRight="35dp"
-                android:text="Save"
-                tools:layout_editor_absoluteX="233dp"
-                tools:layout_editor_absoluteY="412dp" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/imgString"
+        <TextView
+            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/emailString"
-            android:layout_marginTop="30dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Img:" />
+            android:layout_alignBaseline="@+id/settings_contact"
+            android:layout_alignBottom="@+id/settings_contact"
+            android:layout_alignEnd="@+id/textView7"
+            android:layout_alignRight="@+id/textView7"
+            android:text="Contact:" />
 
-        <EditText
-            android:id="@+id/emailString"
+        <TextView
+            android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="19dp"
-            android:ems="10"
-            android:inputType="textPersonName"
+            android:layout_alignBaseline="@+id/settings_email"
+            android:layout_alignBottom="@+id/settings_email"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_toLeftOf="@+id/settings_email"
+            android:layout_toStartOf="@+id/settings_email"
             android:text="Email:" />
 
-        <EditText
-            android:id="@+id/contactString"
+        <TextView
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/imgString"
-            android:layout_marginTop="36dp"
+            android:layout_alignTop="@+id/settings_image"
+            android:layout_toLeftOf="@+id/settings_save"
+            android:layout_toStartOf="@+id/settings_save"
+            android:text="Profile Image" />
+
+        <Button
+            android:id="@+id/settings_save"
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/settings_contact"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/settings_contact"
+            android:layout_marginBottom="40dp"
+            android:text="Save"
+            tools:layout_editor_absoluteX="233dp"
+            tools:layout_editor_absoluteY="412dp" />
+
+        <EditText
+            android:id="@+id/settings_contact"
+            android:layout_width="293dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/settings_email"
+            android:layout_alignStart="@+id/settings_email"
+            android:layout_below="@+id/settings_email"
+            android:layout_marginTop="15dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Contact:" />
+            android:hint="Phone Number (optional)"
+            android:inputType="phone"
+            android:text="" />
+
+        <ImageButton
+            android:id="@+id/settings_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/settings_email"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/settings_email"
+            android:layout_marginTop="24dp"
+            android:contentDescription="Add a profile image"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+
+        <EditText
+            android:id="@+id/settings_email"
+            android:layout_width="293dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/settings_image"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="Enter your email"
+            android:inputType="textEmailAddress"
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/msgNotifCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/settings_contact"
+            android:layout_alignRight="@+id/settings_contact"
+            android:layout_below="@+id/settings_contact"
+            android:layout_marginTop="23dp"
+            android:text="Message Notifications" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

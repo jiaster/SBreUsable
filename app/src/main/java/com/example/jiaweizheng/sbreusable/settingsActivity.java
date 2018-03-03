@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by ralph on 3/3/2018.
@@ -60,6 +61,7 @@ public class settingsActivity extends AppCompatActivity{
                 editor.putString("email", settingsEmail.getText().toString());
                 editor.putString("contact", settingsContact.getText().toString());
                 editor.apply();
+                Toast.makeText(settingsActivity.this, "Preferences Saved.", Toast.LENGTH_LONG).show();
             }
         });
     }
