@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".settingsActivity"
+            android:label="settingsAct"></activity>
     </application>
+
+    <uses-feature android:name="android.hardware.camera"
+        android:required="false" />
 
 </manifest>
