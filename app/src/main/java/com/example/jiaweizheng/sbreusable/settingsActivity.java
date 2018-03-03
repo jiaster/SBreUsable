@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 
 /**
@@ -22,20 +23,45 @@ import android.widget.EditText;
  */
 
 public class settingsActivity extends AppCompatActivity{
-    EditText settingsEmail = findViewById(R.id.settings_email);
-    EditText settingsContact = findViewById(R.id.settings_contact);
+    EditText settingsEmail;
+    EditText settingsContact;
+    Button settingsSaveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences sharedPrefs = getSharedPreferences("userContactInfo", Context.MODE_PRIVATE);
-        String email = sharedPrefs.getString("email", "");
-        String contact = sharedPrefs.getString("contact", "");
-        if (contact.equals(""))
-            contact = ""
-        settingsEmail.setText();
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_settings);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        settingsEmail = findViewById(R.id.settings_email);
+        settingsContact = findViewById(R.id.settings_contact);
+        settingsSaveButton = findViewById(R.id.settings_save);
+        String email;
+        String contact;
+        SharedPreferences sharedPrefs = getSharedPreferences("userContactInfo", Context.MODE_PRIVATE);
+        if(sharedPrefs.contains("email")) {
+            email = sharedPrefs.getString("email", "");
+            if (email != null)
+                settingsEmail.setText(email + "");
+        }
+        if(sharedPrefs.contains("contact")) {
+            contact = sharedPrefs.getString("contact", "");
+            if (contact != null)
+                settingsContact.setText(contact + "");
+        }
+
+        settingsSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                settingsEmail = findViewById(R.id.settings_email);
+                settingsContact = findViewById(R.id.settings_contact);
+
+                SharedPreferences sharedPrefs = getSharedPreferences("userContactInfo", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPrefs.edit();
+                editor.putString("email", settingsEmail.getText().toString());
+                editor.putString("contact", settingsContact.getText().toString());
+                editor.apply();
+            }
+        });
     }
 
     @Override
@@ -45,13 +71,11 @@ public class settingsActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        SharedPreferences sharedPrefs = getSharedPreferences("userContactInfo", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putString("email", settingsEmail.getText().toString());
-        editor.putString("contact", settingsContact.getText().toString());
-        editor.apply();
         finish();
         return true;
     }
+
+
+
+
 }
