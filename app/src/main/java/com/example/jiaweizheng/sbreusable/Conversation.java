@@ -5,24 +5,26 @@ import android.graphics.drawable.Drawable;
 import java.io.Serializable;
 
 class Conversation implements Serializable{
-    Item item;
-    String lastMessage;
-    float x;
-    float y;
+    private Item item;
+    private String lastMessage;
 
-    String itemName;
-    Drawable itemPhoto;
-    Drawable itemReducedPhoto;
+    private String itemName;
+    private Drawable itemPhoto;
+    private Drawable itemReducedPhoto;
+    private float x;
+    private float y;
 
-    Conversation(Item item, String lastMessage, float x, float y) {
+    Conversation(Item item, String lastMessage) {
         this.item = item;
         this.lastMessage = lastMessage;
-        this.x = x;
-        this.y = y;
+
+        x = item.getX();
+        y = item.getY();
 
         itemName = item.getName();
         itemPhoto = item.getPhoto();
         itemReducedPhoto = item.getReducedPhoto();
+
     }
 
     public String getName(){

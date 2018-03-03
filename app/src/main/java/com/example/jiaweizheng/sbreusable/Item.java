@@ -57,5 +57,13 @@ class Item implements Serializable{
         return user;
     }
 
+    public float getX(){
+        return x;
+    }
+
+    public float getY(){
+        return y;
+    }
+
 
 }
