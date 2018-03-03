@@ -20,6 +20,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ItemViewHolder> {
         CardView cv;
         TextView itemName;
         TextView itemDescription;
+        TextView itemUser;
         ImageView itemPhoto;
 
         ItemViewHolder(View itemView) {
@@ -27,6 +28,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ItemViewHolder> {
             cv = (CardView)itemView.findViewById(R.id.cv);
             itemName = (TextView)itemView.findViewById(R.id.item_name);
             itemDescription = (TextView)itemView.findViewById(R.id.item_description);
+            itemUser = (TextView)itemView.findViewById(R.id.item_user);
             itemPhoto = (ImageView)itemView.findViewById(R.id.item_photo);
         }
     }
@@ -53,6 +55,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ItemViewHolder> {
     public void onBindViewHolder(ItemViewHolder itemViewHolder, int i) {
         itemViewHolder.itemName.setText(items.get(i).name);
         itemViewHolder.itemDescription.setText(items.get(i).description);
+        itemViewHolder.itemUser.setText(items.get(i).user);
         itemViewHolder.itemPhoto.setImageResource(items.get(i).photoId);
     }
 
