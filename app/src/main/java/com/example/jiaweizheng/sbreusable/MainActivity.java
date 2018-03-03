@@ -1,5 +1,6 @@
 package com.example.jiaweizheng.sbreusable;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -145,6 +146,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_messages) {
 
         } else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(MainActivity.this, settingsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_loginout) {
 
