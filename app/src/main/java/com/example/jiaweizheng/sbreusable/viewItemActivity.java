@@ -3,6 +3,7 @@ package com.example.jiaweizheng.sbreusable;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -32,4 +33,10 @@ public class viewItemActivity extends Activity {
         category.setText(viewedItem.category);
     }
 
+    public void mapButtonGo(View view) {
+        Intent intent = new Intent(this, MapsMarkerActivity.class);
+        intent.putExtra("X", viewedItem.x);
+        intent.putExtra("Y", viewedItem.y);
+        startActivity(intent);
+    }
 }
