@@ -36,6 +36,8 @@
             android:parentActivityName=".MainActivity" />
         <activity android:name=".settingsActivity"
             android:label="Settings"/>
+        <activity android:name=".LoginActivity"
+            android:label="Login"/>
     </application>
 
     <uses-feature android:name="android.hardware.camera"

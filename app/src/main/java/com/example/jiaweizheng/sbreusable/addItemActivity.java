@@ -86,14 +86,14 @@ public class addItemActivity extends Activity{
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-            photo = (Bitmap) data.getExtras().get("data");
+        photo = (Bitmap) data.getExtras().get("data");
 
-            reducedPhoto = getResizedBitmap(photo, 72);
+        reducedPhoto = getResizedBitmap(photo, 72);
 
-            imageButton.setImageBitmap(reducedPhoto);
+        imageButton.setImageBitmap(reducedPhoto);
 
-            title=titleField.getText().toString();
-            description=descriptionField.getText().toString();
+        title=titleField.getText().toString();
+        description=descriptionField.getText().toString();
 /*
             Intent resultIntent = new Intent();
             resultIntent.putExtra("photo", photo);

@@ -12,7 +12,7 @@ class Item implements Serializable{
     String contact;
     float x;
     float y;
-    Bitmap photo;
+    public Bitmap photo;
     Bitmap reducedPhoto;
 
     Item(String name, String description, int photoId, int bigPhotoId, String category, String user, String contact, float x, float y) {
