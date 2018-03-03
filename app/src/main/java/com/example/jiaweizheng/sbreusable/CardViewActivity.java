@@ -1,6 +1,7 @@
 package com.example.jiaweizheng.sbreusable;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ public class CardViewActivity extends Activity {
     TextView itemName;
     TextView itemDescription;
     ImageView itemPhoto;
+    Bitmap photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
