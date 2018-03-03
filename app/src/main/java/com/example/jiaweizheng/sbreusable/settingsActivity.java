@@ -64,7 +64,6 @@ public class settingsActivity extends AppCompatActivity{
                 Toast.makeText(settingsActivity.this, "Preferences Saved.", Toast.LENGTH_LONG).show();
                     finish();
 
-
             }
         });
     }

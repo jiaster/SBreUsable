@@ -1,6 +1,8 @@
 package com.example.jiaweizheng.sbreusable;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +27,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     private List<Item> items;
     private RecyclerView rv;
     private static final int SECOND_ACTIVITY_REQUEST_CODE = 0;
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity
     private String category;
     private String username;
     private String contactname;
+    public boolean consumeCheck = false;
+    public boolean techCheck = false;
+    public boolean clothCheck = false;
+    public boolean bookCheck = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         navigationView.setNavigationItemSelectedListener(this);
 
         rv=(RecyclerView)findViewById(R.id.rv);
@@ -77,7 +84,9 @@ public class MainActivity extends AppCompatActivity
 
         initializeData();
         initializeAdapter();
+
     }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -122,7 +131,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
             return true;
         }
 
@@ -136,7 +145,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_consume) {
-            // Handle the camera action
+
+
         } else if (id == R.id.nav_tech) {
 
         } else if (id == R.id.nav_clothing) {

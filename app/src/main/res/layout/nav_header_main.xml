@@ -24,13 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Ralph Huang"
+        android:text="Guest"
+        android:id="@+id/header_user"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/header_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ralph.huang@stonybrook.edu" />
+        android:text="Guest" />
 
 </LinearLayout>
