@@ -80,7 +80,4 @@ public class settingsActivity extends AppCompatActivity{
         return true;
     }
 
-
-
-
 }

@@ -38,6 +38,8 @@
             android:label="Settings"/>
         <activity android:name=".LoginActivity"
             android:label="Login"/>
+        <activity android:name=".MessageActivity"
+            android:label="Message"/>
     </application>
 
     <uses-feature android:name="android.hardware.camera"

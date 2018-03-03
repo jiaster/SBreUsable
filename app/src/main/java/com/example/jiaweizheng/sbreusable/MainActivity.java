@@ -151,11 +151,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_books) {
 
         } else if (id == R.id.nav_messages) {
-
+            Intent intent = new Intent(MainActivity.this, MessageActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(MainActivity.this, settingsActivity.class);
             startActivity(intent);
-
         } else if (id == R.id.nav_loginout) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);

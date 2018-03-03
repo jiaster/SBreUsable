@@ -7,8 +7,8 @@ import android.graphics.drawable.Drawable;
 class Item implements Serializable{
     String name;
     String description;
-    int photoId;
-    int bigPhotoId;
+//    int photoId;
+//    int bigPhotoId;
     String category;
     String user;
     String contact;
@@ -39,6 +39,22 @@ class Item implements Serializable{
         this.contact = contact;
         this.x = x;
         this.y = y;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public Drawable getPhoto(){
+        return photo;
+    }
+
+    public Drawable getReducedPhoto(){
+        return reducedPhoto;
+    }
+
+    public String getUser(){
+        return user;
     }
 
 
