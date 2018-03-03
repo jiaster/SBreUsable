@@ -32,6 +32,8 @@
         <activity
             android:name=".addItemActivity"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".viewItemActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
     <uses-feature android:name="android.hardware.camera"

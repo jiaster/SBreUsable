@@ -1,6 +1,8 @@
 package com.example.jiaweizheng.sbreusable;
 
-class Item {
+import java.io.Serializable;
+
+class Item implements Serializable{
     String name;
     String description;
     int photoId;
