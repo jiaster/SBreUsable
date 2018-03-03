@@ -105,55 +105,74 @@
                     android:id="@+id/setLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/techRadio"
-                    android:layout_alignStart="@+id/techRadio"
-                    android:layout_below="@+id/techRadio"
+                    android:layout_below="@+id/radioGroup"
+                    android:layout_marginTop="13dp"
+                    android:layout_toLeftOf="@+id/extra_image3"
+                    android:layout_toStartOf="@+id/extra_image3"
+                    android:onClick="setLocationButton"
                     android:text="Set Location" />
 
                 <Button
                     android:id="@+id/post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/clothingRadio"
-                    android:layout_alignStart="@+id/clothingRadio"
-                    android:layout_below="@+id/clothingRadio"
-                    android:text="Post" />
+                    android:layout_alignParentBottom="true"
+                    android:layout_toEndOf="@+id/setLocation"
+                    android:layout_toRightOf="@+id/setLocation"
+                    android:onClick="postButton"
+                    android:text="Post"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="494dp" />
 
-                <RadioButton
-                    android:id="@+id/foodRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/description"
-                    android:layout_toEndOf="@+id/extra_image1"
-                    android:layout_toRightOf="@+id/extra_image1"
-                    android:text="Food" />
-
-                <RadioButton
-                    android:id="@+id/techRadio"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/foodRadio"
                     android:layout_alignStart="@+id/foodRadio"
-                    android:layout_below="@+id/foodRadio"
-                    android:text="Tech" />
-
-                <RadioButton
-                    android:id="@+id/clothingRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/bookRadio"
-                    android:layout_alignStart="@+id/bookRadio"
-                    android:layout_below="@+id/bookRadio"
-                    android:text="Clothing" />
-
-                <RadioButton
-                    android:id="@+id/bookRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/extra_image3"
-                    android:layout_alignStart="@+id/extra_image3"
                     android:layout_below="@+id/description"
-                    android:text="Book" />
+                    android:orientation="horizontal"
+                    android:id="@+id/radioGroup">
+
+                    <RadioButton
+                        android:id="@+id/bookRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/extra_image3"
+                        android:layout_alignStart="@+id/extra_image3"
+                        android:layout_below="@+id/description"
+                        android:layout_weight="1"
+                        android:text="Book" />
+
+                    <RadioButton
+                        android:id="@+id/clothingRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/bookRadio"
+                        android:layout_alignStart="@+id/bookRadio"
+                        android:layout_below="@+id/bookRadio"
+                        android:layout_weight="1"
+                        android:text="Clothing" />
+
+                    <RadioButton
+                        android:id="@+id/techRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/foodRadio"
+                        android:layout_alignStart="@+id/foodRadio"
+                        android:layout_below="@+id/foodRadio"
+                        android:layout_weight="1"
+                        android:text="Tech" />
+
+                    <RadioButton
+                        android:id="@+id/foodRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/description"
+                        android:layout_toEndOf="@+id/extra_image1"
+                        android:layout_toRightOf="@+id/extra_image1"
+                        android:layout_weight="1"
+                        android:text="Food" />
+                </RadioGroup>
             </RelativeLayout>
 
         </LinearLayout>
