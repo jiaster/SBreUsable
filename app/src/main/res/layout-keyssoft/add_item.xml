@@ -100,60 +100,59 @@
                     android:lines="3"
                     android:text="Description" />
 
-                <CheckBox
-                    android:id="@+id/foodCheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/extra_image1"
-                    android:layout_alignStart="@+id/extra_image1"
-                    android:layout_below="@+id/description"
-                    android:text="Food" />
-
-                <CheckBox
-                    android:id="@+id/booksCheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/ClothingCheck"
-                    android:layout_alignStart="@+id/ClothingCheck"
-                    android:layout_below="@+id/description"
-                    android:text="Books" />
-
-                <CheckBox
-                    android:id="@+id/techCheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/foodCheck"
-                    android:layout_alignStart="@+id/foodCheck"
-                    android:layout_below="@+id/foodCheck"
-                    android:text="Tech" />
-
-                <CheckBox
-                    android:id="@+id/ClothingCheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/extra_image3"
-                    android:layout_alignStart="@+id/extra_image3"
-                    android:layout_below="@+id/booksCheck"
-                    android:text="Clothing" />
-
                 <Button
                     android:id="@+id/setLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/techCheck"
-                    android:layout_alignStart="@+id/techCheck"
-                    android:layout_below="@+id/techCheck"
-                    android:layout_marginTop="24dp"
+                    android:layout_alignLeft="@+id/techRadio"
+                    android:layout_alignStart="@+id/techRadio"
+                    android:layout_below="@+id/techRadio"
                     android:text="Set Location" />
 
                 <Button
                     android:id="@+id/post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/ClothingCheck"
-                    android:layout_alignStart="@+id/ClothingCheck"
-                    android:layout_alignTop="@+id/setLocation"
+                    android:layout_alignLeft="@+id/clothingRadio"
+                    android:layout_alignStart="@+id/clothingRadio"
+                    android:layout_below="@+id/clothingRadio"
                     android:text="Post" />
+
+                <RadioButton
+                    android:id="@+id/foodRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/description"
+                    android:layout_toEndOf="@+id/extra_image1"
+                    android:layout_toRightOf="@+id/extra_image1"
+                    android:text="Food" />
+
+                <RadioButton
+                    android:id="@+id/techRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/foodRadio"
+                    android:layout_alignStart="@+id/foodRadio"
+                    android:layout_below="@+id/foodRadio"
+                    android:text="Tech" />
+
+                <RadioButton
+                    android:id="@+id/clothingRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/bookRadio"
+                    android:layout_alignStart="@+id/bookRadio"
+                    android:layout_below="@+id/bookRadio"
+                    android:text="Clothing" />
+
+                <RadioButton
+                    android:id="@+id/bookRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/extra_image3"
+                    android:layout_alignStart="@+id/extra_image3"
+                    android:layout_below="@+id/description"
+                    android:text="Book" />
             </RelativeLayout>
 
         </LinearLayout>
