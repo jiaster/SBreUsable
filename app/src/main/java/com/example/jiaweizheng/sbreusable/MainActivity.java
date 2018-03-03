@@ -1,8 +1,11 @@
 package com.example.jiaweizheng.sbreusable;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,8 +20,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +42,10 @@ public class MainActivity extends AppCompatActivity
     private String category;
     private String username;
     private String contactname;
+    private String key = "Key";
+    private Item emptyItem;
+    SharedPreferences shref;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +53,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        shref = MainActivity.this.getSharedPreferences("PREFERENCES", Context.MODE_PRIVATE);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +69,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        emptyItem = new Item("No orders available.", "", null, null, "", "", "", 0, 0);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -136,21 +147,80 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_consume) {
-            // Handle the camera action
+            Toast.makeText(MainActivity.this, "Viewing all food orders.", Toast.LENGTH_LONG).show();
+            ArrayList<Item> newList = new ArrayList<>();
+            Gson gson = new Gson();
+            String response = shref.getString(key, "");
+            items = gson.fromJson(response, new TypeToken<List<Item>>(){}.getType());
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).category.equals("food")) {
+                    newList.add(items.get(i));
+                }
+            }
+            items = newList;
+            if(items.size()==0) {
+                newList.add(emptyItem);
+            }
+            initializeAdapter();
         } else if (id == R.id.nav_tech) {
-
+            Toast.makeText(MainActivity.this, "Viewing all technology orders.", Toast.LENGTH_LONG).show();
+            ArrayList<Item> newList = new ArrayList<>();
+            Gson gson = new Gson();
+            String response = shref.getString(key, "");
+            items = gson.fromJson(response, new TypeToken<List<Item>>(){}.getType());
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).category.equals("tech")) {
+                    newList.add(items.get(i));
+                }
+            }
+            items = newList;
+            if(items.size()==0) {
+                newList.add(emptyItem);
+            }
+            initializeAdapter();
         } else if (id == R.id.nav_clothing) {
-
+            Toast.makeText(MainActivity.this, "Viewing all clothing orders.", Toast.LENGTH_LONG).show();
+            ArrayList<Item> newList = new ArrayList<>();
+            Gson gson = new Gson();
+            String response = shref.getString(key, "");
+            items = gson.fromJson(response, new TypeToken<List<Item>>(){}.getType());
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).category.equals("clothing")) {
+                    newList.add(items.get(i));
+                }
+            }
+            items = newList;
+            if(items.size()==0) {
+                newList.add(emptyItem);
+            }
+            initializeAdapter();
         } else if (id == R.id.nav_books) {
-
+            Toast.makeText(MainActivity.this, "Viewing all book orders.", Toast.LENGTH_LONG).show();
+            ArrayList<Item> newList = new ArrayList<>();
+            Gson gson = new Gson();
+            String response = shref.getString(key, "");
+            items = gson.fromJson(response, new TypeToken<List<Item>>(){}.getType());
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).category.equals("book")) {
+                    newList.add(items.get(i));
+                }
+            }
+            items = newList;
+            if(items.size()==0) {
+                newList.add(emptyItem);
+            }
+            initializeAdapter();
         } else if (id == R.id.nav_messages) {
-
+            Toast.makeText(MainActivity.this, "You have 0 messages.", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(MainActivity.this, settingsActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_loginout) {
-
+            resetData();
+            initializeAdapter();
+        } else {
+            Intent intent = new Intent( MainActivity.this, settingsActivity.class);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -158,17 +228,50 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void initializeData(){
+    private void resetData() {
         items = new ArrayList<>();
-        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
-        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food", "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book", "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
         items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
-        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
-        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food", "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book", "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
         items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
-        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
-        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food", "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book", "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
         items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+
+        Gson gson = new Gson();
+        String json = gson.toJson(items);
+        editor = shref.edit();
+        editor.remove(key).commit();
+        editor.putString(key, json);
+        editor.commit();
+    }
+
+    private void initializeData(){
+        Gson gson = new Gson();
+        String response = shref.getString(key, "");
+        items = gson.fromJson(response, new TypeToken<List<Item>>(){}.getType());
+
+        if(items==null) {
+            items = new ArrayList<>();
+            items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food", "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+            items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book", "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+            items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+            items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food", "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+            items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book", "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+            items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+            items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food", "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+            items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book", "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+            items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+
+            gson = new Gson();
+            String json = gson.toJson(items);
+            editor = shref.edit();
+            editor.remove(key).commit();
+            editor.putString(key, json);
+            editor.commit();
+        }
     }
 
     private void initializeAdapter(){
@@ -179,12 +282,24 @@ public class MainActivity extends AppCompatActivity
     public void addItem(Item item) {
         if(item != null) {
             items.add(item);
+            Gson gson = new Gson();
+            String json = gson.toJson(items);
+            editor = shref.edit();
+            editor.remove(key).commit();
+            editor.putString(key, json);
+            editor.commit();
         }
     }
 
     public void removeItem(Item item) {
         if(item != null) {
             items.remove(item);
+            Gson gson = new Gson();
+            String json = gson.toJson(items);
+            editor = shref.edit();
+            editor.remove(key).commit();
+            editor.putString(key, json);
+            editor.commit();
         }
     }
 }
