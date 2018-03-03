@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="215dp"
                 android:scaleType="fitCenter"
+                android:onClick="takePicture"
                 app:srcCompat="@android:drawable/ic_menu_add" />
 
             <RelativeLayout
