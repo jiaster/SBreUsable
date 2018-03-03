@@ -3,7 +3,6 @@ package com.example.jiaweizheng.sbreusable;
 import java.io.Serializable;
 import android.graphics.Bitmap;
 class Item implements Serializable{
-import android.graphics.Bitmap;
     String name;
     String description;
     int photoId;

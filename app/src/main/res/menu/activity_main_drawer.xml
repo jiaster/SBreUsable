@@ -3,49 +3,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item android:title="Filters" />
-    <group android:checkableBehavior="single">
+    <item android:title="Filters">
+        <menu>
+    <group android:checkableBehavior="all">
 
         <item
             android:id="@+id/nav_consume"
             android:checkable="true"
             android:checked="false"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_food"
             android:title="Consumables" />
         <item
             android:id="@+id/nav_tech"
             android:checkable="true"
             android:checked="false"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_tech"
             android:title="Technology" />
         <item
             android:id="@+id/nav_clothing"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Clothing"
             android:checkable="true"
-            android:checked="false"/>
+            android:checked="false"
+            android:icon="@drawable/ic_action_name"
+            android:title="Clothing" />
         <item
             android:id="@+id/nav_books"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Books"
             android:checkable="true"
-            android:checked="false"/>
+            android:checked="false"
+            android:icon="@drawable/ic_book"
+            android:title="Books" />
 
     </group>
+        </menu>
+    </item>
 
     <item android:title="User">
         <menu>
             <item
                 android:id="@+id/nav_messages"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_message"
                 android:title="Messages" />
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_settings"
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_loginout"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_loginout"
                 android:title="Log In / Log Out" />
         </menu>
     </item>
