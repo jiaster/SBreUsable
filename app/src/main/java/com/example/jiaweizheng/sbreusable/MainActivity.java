@@ -1,9 +1,11 @@
 package com.example.jiaweizheng.sbreusable;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +15,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
+import android.widget.TextView;
+
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private List<Item> items;
+    private RecyclerView rv;
+    private static final int SECOND_ACTIVITY_REQUEST_CODE = 0;
+    private Bitmap originalPhoto;
+    private Bitmap reducedPhoto;
+    private String nameOfItem;
+    private String description;
+    private String category;
+    private String username;
+    private String contactname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +48,17 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                // Click action
+                Intent intent = new Intent(MainActivity.this, addItemActivity.class);
+                intent.putExtra("photo", originalPhoto);
+                intent.putExtra("reducedPhoto", reducedPhoto);
+                intent.putExtra("nameOfItem", nameOfItem);
+                intent.putExtra("description", description);
+                intent.putExtra("category", category);
+                startActivityForResult(intent, SECOND_ACTIVITY_REQUEST_CODE);
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -41,6 +68,33 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        rv=(RecyclerView)findViewById(R.id.rv);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+
+        initializeData();
+        initializeAdapter();
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // check that it is the SecondActivity with an OK result
+        if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+
+                // get String data from Intent
+                originalPhoto = (Bitmap) data.getParcelableExtra("photo");
+                reducedPhoto = (Bitmap) data.getParcelableExtra("reducedPhoto");
+                nameOfItem = data.getStringExtra("nameOfItem");
+                description = data.getStringExtra("description");
+                category = data.getStringExtra("category");
+            }
+            Item item=new Item(nameOfItem,description, originalPhoto, reducedPhoto,"food", "Ralph", "Jiawei",40.916f, -73.121f  );
+            addItem(item);
+        }
     }
 
     @Override
@@ -102,5 +156,35 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void initializeData(){
+        items = new ArrayList<>();
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+    }
+
+    private void initializeAdapter(){
+        RVAdapter adapter = new RVAdapter(items);
+        rv.setAdapter(adapter);
+    }
+
+    public void addItem(Item item) {
+        if(item != null) {
+            items.add(item);
+        }
+    }
+
+    public void removeItem(Item item) {
+        if(item != null) {
+            items.remove(item);
+        }
     }
 }
