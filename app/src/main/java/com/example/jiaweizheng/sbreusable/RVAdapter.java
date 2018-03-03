@@ -69,7 +69,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ItemViewHolder> {
         itemViewHolder.itemName.setText(items.get(i).name);
         itemViewHolder.itemDescription.setText(items.get(i).description);
         itemViewHolder.itemUser.setText(items.get(i).user);
-        itemViewHolder.itemPhoto.setImageDrawable(items.get(i).reducedPhoto);
+        itemViewHolder.itemPhoto.setImageResource(items.get(i).photoId);
         itemViewHolder.currentItem = items.get(i);
     }
 

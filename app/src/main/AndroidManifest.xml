@@ -51,8 +51,6 @@
             android:label="Settings"/>
         <activity android:name=".MapsMarkerActivity"
             android:label="Map"/>
-        <activity android:name=".LoginActivity"
-            android:label="Login"/>
     </application>
 
     <uses-feature android:name="android.hardware.camera"

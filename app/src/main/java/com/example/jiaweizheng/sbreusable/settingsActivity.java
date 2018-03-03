@@ -62,8 +62,6 @@ public class settingsActivity extends AppCompatActivity{
                 editor.putString("contact", settingsContact.getText().toString());
                 editor.apply();
                 Toast.makeText(settingsActivity.this, "Preferences Saved.", Toast.LENGTH_LONG).show();
-                    finish();
-
             }
         });
     }

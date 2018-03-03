@@ -18,12 +18,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.graphics.BitmapFactory;
 import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.Base64;
-import android.graphics.drawable.*;
+
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -33,13 +31,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     private List<Item> items;
     private RecyclerView rv;
     private static final int SECOND_ACTIVITY_REQUEST_CODE = 0;
-    private Drawable originalPhoto;
-    private Drawable reducedPhoto;
-    private Bitmap photo1;
-    private Bitmap photo2;
+    private Bitmap originalPhoto;
+    private Bitmap reducedPhoto;
     private String nameOfItem;
     private String description;
     private String category;
@@ -49,13 +46,6 @@ public class MainActivity extends AppCompatActivity
     private Item emptyItem;
     SharedPreferences shref;
     SharedPreferences.Editor editor;
-
-    public boolean consumeCheck = false;
-    public boolean techCheck = false;
-    public boolean clothCheck = false;
-    public boolean bookCheck = false;
-
-    Drawable soylent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +60,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 // Click action
                 Intent intent = new Intent(MainActivity.this, addItemActivity.class);
-                intent.putExtra("photo", photo1);
-                intent.putExtra("reducedPhoto", photo2);
+                intent.putExtra("photo", originalPhoto);
+                intent.putExtra("reducedPhoto", reducedPhoto);
                 intent.putExtra("nameOfItem", nameOfItem);
                 intent.putExtra("description", description);
                 intent.putExtra("category", category);
@@ -88,7 +78,6 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
         navigationView.setNavigationItemSelectedListener(this);
 
         rv=(RecyclerView)findViewById(R.id.rv);
@@ -99,9 +88,7 @@ public class MainActivity extends AppCompatActivity
 
         initializeData();
         initializeAdapter();
-
     }
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -110,10 +97,8 @@ public class MainActivity extends AppCompatActivity
             if (resultCode == RESULT_OK) {
 
                 // get String data from Intent
-                photo1 = (Bitmap) data.getParcelableExtra("photo");
-                photo2 = (Bitmap) data.getParcelableExtra("reducedPhoto");
-                originalPhoto=new BitmapDrawable(getResources(), photo1);
-                reducedPhoto=new BitmapDrawable(getResources(), photo2);
+                originalPhoto = (Bitmap) data.getParcelableExtra("photo");
+                reducedPhoto = (Bitmap) data.getParcelableExtra("reducedPhoto");
                 nameOfItem = data.getStringExtra("nameOfItem");
                 description = data.getStringExtra("description");
                 category = data.getStringExtra("category");
@@ -148,7 +133,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
+        if (id == R.id.action_settings) {
             return true;
         }
 
@@ -236,8 +221,6 @@ public class MainActivity extends AppCompatActivity
             initializeAdapter();
         } else {
             Intent intent = new Intent( MainActivity.this, settingsActivity.class);
-            Intent intent = new Intent( MainActivity.this, LoginActivity.class);
-            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -78,58 +78,34 @@
                     android:layout_toEndOf="@+id/extra_image1"
                     android:layout_toRightOf="@+id/extra_image1" />
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/nam"
+                <EditText
+                    android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/extra_image1"
-                    android:hint="Name of Item"
-                    app:hintAnimationEnabled="false"
-                    app:hintEnabled="true">
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/extra_image3"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Name of Item" />
 
-                    <EditText
-                        android:id="@+id/title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/extra_image3"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:selectAllOnFocus="false"
-                        android:textIsSelectable="false" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/des"
+                <EditText
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/nam"
-                    android:hint="Description"
-                    app:hintEnabled="true">
-
-                    <EditText
-                        android:id="@+id/description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/title"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:lines="3"
-                        android:selectAllOnFocus="false"
-                        android:textIsSelectable="false" />
-                </android.support.design.widget.TextInputLayout>
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/title"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:text="Description" />
 
                 <Button
                     android:id="@+id/setLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/bel"
+                    android:layout_below="@+id/radioGroup"
                     android:layout_marginTop="13dp"
                     android:layout_toLeftOf="@+id/extra_image3"
                     android:layout_toStartOf="@+id/extra_image3"
@@ -149,14 +125,13 @@
                     tools:layout_editor_absoluteY="494dp" />
 
                 <RadioGroup
-                    android:id="@+id/bel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/foodRadio"
                     android:layout_alignStart="@+id/foodRadio"
-                    android:layout_below="@+id/des"
-                    android:checkedButton="@+id/bookRadio"
-                    android:orientation="horizontal">
+                    android:layout_below="@+id/description"
+                    android:orientation="horizontal"
+                    android:id="@+id/radioGroup">
 
                     <RadioButton
                         android:id="@+id/bookRadio"
