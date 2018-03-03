@@ -122,18 +122,15 @@ public class MainActivity extends AppCompatActivity
 
     private void initializeData(){
         items = new ArrayList<>();
-        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
-        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
-        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
-        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
-        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
-        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
-        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
-        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
-        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
-        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, "Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
-        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, "Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
-        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
+        items.add(new Item("Cafe Vanilla Soylent", "Read-to-drink meal with coffee.", R.mipmap.soylent, R.mipmap.soylent, "food","Ralph Huang", "ralhuang@cs.stonybrook.edu", 40.916f, -73.126f));
+        items.add(new Item("CSE 303 Textbook", "Paperback textbook for Anika's section.", R.mipmap.textbook, R.mipmap.textbook, "book","Nicholas Chen", "nicholas.chen@stonybrook.edu", 40.916f, -73.121f));
+        items.add(new Item("Monster Drink", "Unopened Monster energy drink.", R.mipmap.monster, R.mipmap.monster, "food", "Jiawei Zheng", "3476027588", 40.909f, -73.127f));
     }
 
     private void initializeAdapter(){
