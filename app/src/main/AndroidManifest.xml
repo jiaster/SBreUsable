@@ -32,6 +32,8 @@
         <activity
             android:name=".addItemActivity"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".viewItemActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".settingsActivity"
             android:label="Settings"/>
     </application>
