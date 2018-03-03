@@ -15,7 +15,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.graphics.BitmapFactory;
-
+import com.example.jiaweizheng.sbreusable.MainActivity;
 
 /**
  * Created by Jia Wei Zheng on 3/3/2018.
@@ -30,7 +30,8 @@ public class addItemActivity extends Activity{
     private int category;
     private EditText titleField;
     private EditText descriptionField;
-
+    Bitmap photo;
+    Bitmap reducedPhoto;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +54,27 @@ public class addItemActivity extends Activity{
     public void postButton(View view) {
         title=titleField.getText().toString();
         description=descriptionField.getText().toString();
+
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("photo", photo);
+        resultIntent.putExtra("reducedPhoto", reducedPhoto);
+        resultIntent.putExtra("nameOfItem", title);
+        resultIntent.putExtra("description", description);
+        resultIntent.putExtra("category", description);
+        setResult(Activity.RESULT_OK, resultIntent);
+
         finish();
     }
 
     public void setLocationButton(View view) {
 
+    }
+
+    public Bitmap getPhoto(){
+        return photo;
+    }
+    public Bitmap getReducedPhoto(){
+        return reducedPhoto;
     }
 
     public String getItemTitle(){
@@ -68,13 +85,24 @@ public class addItemActivity extends Activity{
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
+        //if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+            photo = (Bitmap) data.getExtras().get("data");
 
-            Bitmap reducedPhoto = getResizedBitmap(photo, 72);
+            reducedPhoto = getResizedBitmap(photo, 72);
 
             imageButton.setImageBitmap(reducedPhoto);
-        }
+
+            title=titleField.getText().toString();
+            description=descriptionField.getText().toString();
+/*
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("photo", photo);
+            resultIntent.putExtra("reducedPhoto", reducedPhoto);
+            resultIntent.putExtra("nameOfItem", title);
+            resultIntent.putExtra("description", description);
+            resultIntent.putExtra("category", description);
+            setResult(Activity.RESULT_OK, resultIntent);*/
+        //}
     }
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();

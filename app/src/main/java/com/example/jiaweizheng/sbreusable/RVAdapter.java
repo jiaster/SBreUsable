@@ -23,6 +23,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ItemViewHolder> {
         TextView itemUser;
         ImageView itemPhoto;
 
+
         ItemViewHolder(View itemView) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);

@@ -1,5 +1,6 @@
 package com.example.jiaweizheng.sbreusable;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.widget.TextView;
+
 
 
 import java.util.ArrayList;
@@ -24,6 +27,14 @@ public class MainActivity extends AppCompatActivity
 
     private List<Item> items;
     private RecyclerView rv;
+    private static final int SECOND_ACTIVITY_REQUEST_CODE = 0;
+    private Bitmap originalPhoto;
+    private Bitmap reducedPhoto;
+    private String nameOfItem;
+    private String description;
+    private String category;
+    private String username;
+    private String contactname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +49,15 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 // Click action
                 Intent intent = new Intent(MainActivity.this, addItemActivity.class);
-                startActivity(intent);
+                intent.putExtra("photo", originalPhoto);
+                intent.putExtra("reducedPhoto", reducedPhoto);
+                intent.putExtra("nameOfItem", nameOfItem);
+                intent.putExtra("description", description);
+                intent.putExtra("category", category);
+                startActivityForResult(intent, SECOND_ACTIVITY_REQUEST_CODE);
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,6 +76,24 @@ public class MainActivity extends AppCompatActivity
 
         initializeData();
         initializeAdapter();
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // check that it is the SecondActivity with an OK result
+        if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+
+                // get String data from Intent
+                originalPhoto = (Bitmap) data.getParcelableExtra("photo");
+                reducedPhoto = (Bitmap) data.getParcelableExtra("reducedPhoto");
+                nameOfItem = data.getStringExtra("nameOfItem");
+                description = data.getStringExtra("description");
+                category = data.getStringExtra("category");
+            }
+            Item item=new Item(nameOfItem,description, originalPhoto, reducedPhoto,"food", "Ralph", "Jiawei",40.916f, -73.121f  );
+            addItem(item);
+        }
     }
 
     @Override
